@@ -8,6 +8,19 @@ function App() {
   const [homeValue, setHomeValue] = useState(0);
   const [awayValue, setAwayValue] = useState(0);
 
+  const [presentTime, setPresentTime] = useState(0);
+
+  const [color, setColor] = useState('teal');
+  const styles = {
+    backgroundColor: "#9ACD32"
+  }
+
+  function Both() {
+    setHomeValue(homeValue + 1);
+    setPresentTime(presentTime + 25);
+    setColor(color);
+  }
+
   return (
     <div className="container">
       <section className="scoreboard">
@@ -19,7 +32,7 @@ function App() {
 
             <div className="home__score">{homeValue}</div>
           </div>
-          <div className="timer">00:03</div>
+          <div className="timer">{presentTime}</div>
           <div className="away">
             <h2 className="away__name">Tigers</h2>
             <div className="away__score">{awayValue}</div>
@@ -28,15 +41,28 @@ function App() {
         <BottomRow />
       </section>
       <section className="buttons">
-        <div className="homeButtons">
-          {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
+        {/* <div className="homeButtons"> */}
+          {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners.
           <button onClick ={() => setHomeValue(homeValue + 7)} className="homeButtons__touchdown">Home Touchdown</button>
           <button onClick ={() => setHomeValue(homeValue + 3)}className="homeButtons__fieldGoal">Home Field Goal</button>
+        </div> */}
+        <div className="homeButtons">
+          {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
+          {/* <button onClick ={() => setHomeValue(homeValue + 7)} className="homeButtons__touchdown">Home Touchdown</button> */}
+          <button onClick ={() => Both()}
+          className="homeButtons__fieldGoal">Goal</button>
         </div>
-        <div className="awayButtons">
+
+        {/* <div className="awayButtons">
           <button onClick = {() => setAwayValue(awayValue + 7)}className="awayButtons__touchdown">Away Touchdown</button>
           <button onClick = {() => setAwayValue(awayValue + 3)}className="awayButtons__fieldGoal">Away Field Goal</button>
+        </div> */}
+
+      <div className="awayButtons">
+          {/* <button onClick = {() => setAwayValue(awayValue + 7)}className="awayButtons__touchdown">Away Touchdown</button> */}
+          <button onClick = {() => setAwayValue(awayValue + 1)}className="awayButtons__fieldGoal">Goal</button>
         </div>
+
       </section>
     </div>
   );
